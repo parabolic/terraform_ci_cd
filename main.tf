@@ -38,7 +38,7 @@ resource "google_compute_instance" "cloudlad" {
   count = var.instance_number
 
   name         = "${module.label.id}-${count.index}"
-  machine_type = "n1-standard-1"
+  machine_type = var.machine_type
 
   zone = var.zone
 
@@ -56,7 +56,5 @@ resource "google_compute_instance" "cloudlad" {
 }
 
 resource "google_compute_network" "cloudlad" {
-  # provider = google-beta
-
   name = module.label.id
 }

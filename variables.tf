@@ -1,10 +1,15 @@
+variable "environment" {
+  type = string
+}
+
 variable "instance_number" {
   default = 1
   type    = number
 }
 
-variable "environment" {
-  type = string
+variable "machine_type" {
+  default = "n1-standard-1"
+  type    = string
 }
 
 variable "name" {
@@ -25,3 +30,4 @@ variable "zone" {
   default = "europe-west4-c"
   type    = string
 }
+
