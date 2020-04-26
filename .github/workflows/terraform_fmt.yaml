@@ -1,0 +1,33 @@
+name: 'Terraform GitHub Actions'
+on:
+  push:
+    paths:
+    - 'example/*.tf'
+    - '*.tf'
+
+env:
+  tf_version: 'latest'
+  tf_working_dir_root: '.'
+  tf_working_dir_example: './example'
+
+jobs:
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Terraform Format root dir'
+        uses: hashicorp/terraform-github-actions@master
+        with:
+          tf_actions_version: ${{ env.tf_version }}
+          tf_actions_subcommand: 'fmt'
+          tf_actions_working_dir: ${{ env.tf_working_dir }}
+          tf_actions_comment: true
+      - name: 'Terraform Format example dir'
+        uses: hashicorp/terraform-github-actions@master
+        with:
+          tf_actions_version: ${{ env.tf_version }}
+          tf_actions_subcommand: 'fmt'
+          tf_actions_working_dir: ${{ env.tf_working_dir_example }}
+          tf_actions_comment: true
