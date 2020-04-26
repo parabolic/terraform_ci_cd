@@ -2,8 +2,8 @@ name: 'Terraform GitHub Actions'
 on:
   push:
     paths:
-    - './example/*.tf'
-    - './*.tf'
+    - 'example/*.tf'
+    - '*.tf'
 
 env:
   tf_version: 'latest'

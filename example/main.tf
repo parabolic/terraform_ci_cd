@@ -3,6 +3,7 @@ provider "google" {
   region  = var.region
 }
 
+
 module "cloudlad" {
   source = "../"
 
